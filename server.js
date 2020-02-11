@@ -32,9 +32,6 @@ var HEROES = [
   {'id': 3, 'name': 'Damntrecky', 'age': 30},
 ];
 
-function abort_if_todo_doesnt_exist(id) {
-
-}
 
 /**
  * @description Get the hero object based on id
@@ -73,50 +70,45 @@ app.post('/todos', (req, res) => {
     res.status(500).send('Error creating /todos');
   }
 });
-// get a single hero
+// get a single todo
 app.get('/todos/:todoId', (req, res) => {
   try {
-    var heroID = req.params.id;
-    let heroIndex = getHeroByIndex(heroID);
-    if (heroIndex === -1) res.status(404).send(`Hero {} doesn't exist ${heroID}`);
-    else {
-      res.status(200).send(HEROES[heroIndex]);
-    }
+    var todoID = req.params.todoId;
+    if (!TODO[todoID]) res.status(404).send(`Todo {} doesn't exist ${todoID}`);
+    else res.status(200).send(TODO[todoID]);
   } catch(e) {
-    res.status(500).send(`Error getting /heroes/${heroID}`, e);
+    res.status(500).send(`Error getting /todos/${todoID}`);
   }
 });
 // delete a hero
 app.delete('/todos/:todoId', (req, res) => {
   try {
-    var heroID = req.params.id;
-    let heroIndex = getHeroByIndex(heroID);
-    if (heroIndex === -1) res.status(404).send(`Hero {} doesn't exist ${heroID}`);
+    var todoID = req.params.todoId;
+    if (!TODO[todoID]) res.status(404).send(`Todo {} doesn't exist ${todoID}`);
     else {
-      delete HEROES[heroIndex];
+      delete TODO[todoID];
       res.sendStatus(204);
     }
   } catch(e) {
-    res.status(500).send(`Error getting /todos/${heroID}`, e);
+    res.status(500).send(`Error getting /todos/${todoID}`);
   }
 });
 // function to update hero with PATCH/PUT
 function updateTodo(req, res) {
   try {
-    var heroID = req.params.id;
+    var todoID = req.params.todoId;
     let updateBody = req.body;
-    let heroIndex = getHeroByIndex(heroID);
-    if (heroIndex === -1) res.status(404).send(`Hero {} doesn't exist ${heroID}`);
+    if (!TODO[todoID]) res.status(404).send(`Todo {} doesn't exist ${todoID}`);
     else {
-      let heroObj = HEROES[heroIndex];
+      let todoObj = TODO[todoID];
       // update all keys but id
       for (key in updateBody) {
-        if (key != 'id') heroObj[key] = updateBody[key];
+        todoObj[key] = updateBody[key];
       }
-      res.status(201).send(heroObj);
+      res.status(201).send(todoObj);
     }
   } catch(e) {
-    res.status(500).send(`Error updating /todos/${heroID}`, e);
+    res.status(500).send(`Error updating /todos/${todoID}`);
   }
 };
 // update a hero field (single cell update)
@@ -153,7 +145,7 @@ app.get('/heroes/:id', (req, res) => {
       res.status(200).send(HEROES[heroIndex]);
     }
   } catch(e) {
-    res.status(500).send(`Error getting /heroes/${heroID}`, e);
+    res.status(500).send(`Error getting /heroes/${heroID}`);
   }
 });
 // delete a hero
@@ -167,7 +159,7 @@ app.delete('/heroes/:id', (req, res) => {
       res.sendStatus(204);
     }
   } catch(e) {
-    res.status(500).send(`Error getting /heroes/${heroID}`, e);
+    res.status(500).send(`Error getting /heroes/${heroID}`);
   }
 });
 // function to update hero with PATCH/PUT
@@ -186,7 +178,7 @@ function updateHero(req, res) {
       res.status(201).send(heroObj);
     }
   } catch(e) {
-    res.status(500).send(`Error updating /heroes/${heroID}`, e);
+    res.status(500).send(`Error updating /heroes/${heroID}`);
   }
 };
 // update a hero field (single cell update)

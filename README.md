@@ -2,22 +2,23 @@
 
 Create a REST endpoint with Node.js and Express.js. You will have a working UI component enabling CRUD functionality in minutes!
 
-![](https://d2ddoduugvun08.cloudfront.net/items/3r3a2x2s0w2s2a0W2c2B/Screen%20Recording%202020-02-10%20at%2003.25%20PM.gif)
+![](https://d2ddoduugvun08.cloudfront.net/items/1b0N471t0e2A0f340z3V/Screen%20Recording%202020-02-11%20at%2010.02%20AM.gif)
 
 ## System Requirements
 
 - Node.js (v10.13.0+) -> (Required) A Node version of this, or higher, is required.
 
-## Flask Links
-1. Node.js -> https://nodejs.org/en/
+### Helpful Links
 
+1. Node.js -> https://nodejs.org/en/
+2. Express.js -> https://expressjs.com/en/4x/api.html
 
 ## Installation Steps
 
 1. Install the dependencies `npm install`
 
-2. Run the server with `npm run start`
-3. 
+2. Run the server with `npm run start` and visit http://localhost:8000/
+  
 #### Localhost Links
 
 The root UI is at http://localhost:8000/ and that file is `templates/zinggrid.html`
