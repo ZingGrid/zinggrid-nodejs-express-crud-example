@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Basic ZingGrid Node.js Express Example</title>
+        <script src="https://cdn.zinggrid.com/canary/zinggrid-canary.min.js" defer></script>
+    </head>
+
+    <body>
+        <h1>Node.js Express Tutorial</h1>
+        <hr>
+        <zing-grid 
+            caption="Node.js Express Object of Objects Demo"
+            src="/todos"
+            editor-controls>
+            <zg-colgroup>
+                <zg-column index="recordkey"></zg-column>
+                <zg-column index="task"></zg-column>
+            </zg-colgroup>
+        </zing-grid>
+        
+        <hr>
+        <p>
+            The heroes grid will use an array of objects instead of an object
+            of objects like the above example.
+        </p>
+        <zing-grid 
+            caption="Node.js Express Array of Objects Demo"
+            src="/heroes"
+            editor-controls>
+            <zg-colgroup>
+                <zg-column index="name" type="text"></zg-column>
+                <zg-column index="age" type="number"></zg-column>
+            </zg-colgroup>
+        </zing-grid>
+    </body>
+</html>
