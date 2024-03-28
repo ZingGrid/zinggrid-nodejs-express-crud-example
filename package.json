@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ZingGrid/zinggrid-nodejs-express-crud-example#readme",
   "dependencies": {
-    "express": "4.18.2",
+    "express": "4.19.2",
     "body-parser": "1.20.1",
     "cors": "2.8.5"
   }
